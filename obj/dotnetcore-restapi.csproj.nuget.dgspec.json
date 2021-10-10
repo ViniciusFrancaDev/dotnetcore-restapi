@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/vfranca/personal_projects/dotnetcore-restapi/dotnetcore-restapi.csproj": {}
+  },
+  "projects": {
+    "/home/vfranca/personal_projects/dotnetcore-restapi/dotnetcore-restapi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/vfranca/personal_projects/dotnetcore-restapi/dotnetcore-restapi.csproj",
+        "projectName": "dotnetcore-restapi",
+        "projectPath": "/home/vfranca/personal_projects/dotnetcore-restapi/dotnetcore-restapi.csproj",
+        "packagesPath": "/home/vfranca/.nuget/packages/",
+        "outputPath": "/home/vfranca/personal_projects/dotnetcore-restapi/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/vfranca/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.413/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
