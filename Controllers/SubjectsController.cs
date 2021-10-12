@@ -9,7 +9,13 @@ namespace dotnetcore_restapi.Controllers
     [ApiController]
     public class SubjectsController : ControllerBase
     {
-        private readonly MockSubjectRepo _repository = new MockSubjectRepo();
+        private readonly ISubjectRepo _repository;
+
+        public SubjectsController(ISubjectRepo repository)
+        {
+            _repository = repository;
+        }
+
         [HttpGet]
         public ActionResult <IEnumerable<Subject>> GetAllSubjects()
         {
