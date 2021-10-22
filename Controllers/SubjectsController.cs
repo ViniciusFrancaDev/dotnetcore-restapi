@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using AutoMapper;
 using dotnetcore_restapi.Data;
+using dotnetcore_restapi.Dtos;
 using dotnetcore_restapi.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,27 +12,29 @@ namespace dotnetcore_restapi.Controllers
     public class SubjectsController : ControllerBase
     {
         private readonly ISubjectRepo _repository;
+        private readonly IMapper _mapper;
 
-        public SubjectsController(ISubjectRepo repository)
+        public SubjectsController(ISubjectRepo repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public ActionResult <IEnumerable<Subject>> GetAllSubjects()
+        public ActionResult <IEnumerable<SubjectReadDto>> GetAllSubjects()
         {
             var subjects = _repository.GetSubjects();
 
-            return Ok(subjects);
+            return Ok(_mapper.Map<IEnumerable<SubjectReadDto>>(subjects));
         }
 
         [HttpGet("{id}")]
-        public ActionResult <Subject> GetSubjectById(int id)
+        public ActionResult <SubjectReadDto> GetSubjectById(int id)
         {
             var subject = _repository.GetSubjectById(id);
             if (subject != null)
             {
-                return Ok(subject);
+                return Ok(_mapper.Map<SubjectReadDto>(subject));
             }
             return NotFound();
         }
