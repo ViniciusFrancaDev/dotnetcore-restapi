@@ -31,6 +31,8 @@ namespace dotnetcore_restapi
 
             services.AddControllers();
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddScoped<ISubjectRepo, SqlSubjectRepo>();
         }
 
