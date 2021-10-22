@@ -28,8 +28,11 @@ namespace dotnetcore_restapi.Controllers
         public ActionResult <Subject> GetSubjectById(int id)
         {
             var subject = _repository.GetSubjectById(id);
-
-            return Ok(subject);
+            if (subject != null)
+            {
+                return Ok(subject);
+            }
+            return NotFound();
         }
     }
 }
