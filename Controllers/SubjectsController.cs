@@ -28,7 +28,7 @@ namespace dotnetcore_restapi.Controllers
             return Ok(_mapper.Map<IEnumerable<SubjectReadDto>>(subjects));
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name="GetSubjectById")]
         public ActionResult <SubjectReadDto> GetSubjectById(int id)
         {
             var subject = _repository.GetSubjectById(id);
@@ -37,6 +37,18 @@ namespace dotnetcore_restapi.Controllers
                 return Ok(_mapper.Map<SubjectReadDto>(subject));
             }
             return NotFound();
+        }
+
+        [HttpPost]
+        public ActionResult <SubjectReadDto> CreateSubject(SubjectCreateDto subjectCreateDto)
+        {
+            var subjectModel = _mapper.Map<Subject>(subjectCreateDto);
+            _repository.CreateSubject(subjectModel);
+            _repository.SaveChanges();
+
+            var SubjectReadDto = _mapper.Map<SubjectReadDto>(subjectModel);
+
+            return CreatedAtRoute(nameof(GetSubjectById), new {Id = SubjectReadDto.Id}, SubjectReadDto);
         }
     }
 }
