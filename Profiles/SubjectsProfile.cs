@@ -10,6 +10,7 @@ namespace dotnetcore_restapi.Profiles
         {
             CreateMap<Subject, SubjectReadDto>();
             CreateMap<SubjectCreateDto, Subject>();
+            CreateMap<SubjectUpdateDto, Subject>();
         }
     }
 }
