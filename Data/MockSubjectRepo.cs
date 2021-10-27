@@ -5,11 +5,6 @@ namespace dotnetcore_restapi.Data
 {
     public class MockSubjectRepo : ISubjectRepo
     {
-        public void CreateSubject(Subject subject)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public Subject GetSubjectById(int id)
         {
             return new Subject{Id=1, Name="Defence Against the Dark Arts",
@@ -34,6 +29,16 @@ namespace dotnetcore_restapi.Data
         }
 
         public bool SaveChanges()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void CreateSubject(Subject subject)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void UpdateSubject(Subject subject)
         {
             throw new System.NotImplementedException();
         }

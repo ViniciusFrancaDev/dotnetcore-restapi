@@ -50,5 +50,22 @@ namespace dotnetcore_restapi.Controllers
 
             return CreatedAtRoute(nameof(GetSubjectById), new {Id = SubjectReadDto.Id}, SubjectReadDto);
         }
+
+        [HttpPut("{id}")]
+        public ActionResult UpdateSubject(int id, SubjectUpdateDto subjectUpdateDto)
+        {
+            var subjectModel = _repository.GetSubjectById(id);
+            if (subjectModel == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(subjectUpdateDto, subjectModel);
+
+            _repository.UpdateSubject(subjectModel);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
     }
 }

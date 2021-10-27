@@ -38,5 +38,10 @@ namespace dotnetcore_restapi.Data
 
             _context.Subjects.Add(subject);
         }
+
+        public void UpdateSubject(Subject subject)
+        {
+            // Not needed(handled by context)
+        }
     }
 }
