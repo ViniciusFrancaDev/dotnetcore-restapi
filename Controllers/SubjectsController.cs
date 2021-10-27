@@ -3,6 +3,7 @@ using AutoMapper;
 using dotnetcore_restapi.Data;
 using dotnetcore_restapi.Dtos;
 using dotnetcore_restapi.Models;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace dotnetcore_restapi.Controllers
@@ -61,6 +62,31 @@ namespace dotnetcore_restapi.Controllers
             }
 
             _mapper.Map(subjectUpdateDto, subjectModel);
+
+            _repository.UpdateSubject(subjectModel);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+        [HttpPatch("{id}")]
+        public ActionResult PartialUpdateSubject(int id, JsonPatchDocument<SubjectUpdateDto> patchData)
+        {
+            var subjectModel = _repository.GetSubjectById(id);
+            if (subjectModel == null)
+            {
+                return NotFound();
+            }
+
+            var subjectToPatch = _mapper.Map<SubjectUpdateDto>(subjectModel);
+            patchData.ApplyTo(subjectToPatch, ModelState);
+
+            if (!TryValidateModel(subjectToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+
+            _mapper.Map(subjectToPatch, subjectModel);
 
             _repository.UpdateSubject(subjectModel);
             _repository.SaveChanges();
