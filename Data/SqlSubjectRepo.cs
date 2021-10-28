@@ -43,5 +43,15 @@ namespace dotnetcore_restapi.Data
         {
             // Not needed(handled by context)
         }
+
+        public void DeleteSubject(Subject subject)
+        {
+            if (subject == null)
+            {
+                throw new ArgumentNullException(nameof(subject));
+            }
+
+            _context.Subjects.Remove(subject);
+        }
     }
 }

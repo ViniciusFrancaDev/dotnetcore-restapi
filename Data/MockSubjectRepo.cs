@@ -42,5 +42,10 @@ namespace dotnetcore_restapi.Data
         {
             throw new System.NotImplementedException();
         }
+
+        public void DeleteSubject(Subject subject)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
