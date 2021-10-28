@@ -93,5 +93,20 @@ namespace dotnetcore_restapi.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteSubject(int id)
+        {
+            var subjectModel = _repository.GetSubjectById(id);
+            if (subjectModel == null)
+            {
+                return NotFound();
+            }
+
+            _repository.DeleteSubject(subjectModel);
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
     }
 }
