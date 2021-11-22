@@ -11,5 +11,6 @@ namespace dotnetcore_restapi.Data
         Subject GetSubjectById(int id);
         void CreateSubject(Subject subject);
         void UpdateSubject(Subject subject);
+        void DeleteSubject(Subject subject);
     }
 }
